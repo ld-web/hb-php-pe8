@@ -9,3 +9,5 @@
 ## [Tableaux](02-arrays/)
 
 - Déclaration, affichage (`var_dump`), accès à un élément, ajout (en fin de tableau), modification : [index.php](02-arrays/index.php)
+
+- Boucles : [loops](02-arrays/loops.php) & [do...while](02-arrays/do-while.php)

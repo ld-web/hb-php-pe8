@@ -1,7 +1,7 @@
 {
   "name": "PHP - Apache",
   "image": "ghcr.io/ld-web/php-apache:8.2",
-  "postStartCommand": "sudo service apache2 start",
+  "postStartCommand": "service apache2 start",
   "mounts": [
     "source=${localWorkspaceFolder},target=/var/www/html,type=bind,consistency=cached"
   ],

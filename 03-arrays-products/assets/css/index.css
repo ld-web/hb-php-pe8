@@ -6,10 +6,6 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   padding-bottom: 5rem;
-
-  & > header {
-    text-align: center;
-  }
 }
 
 h1,
@@ -19,6 +15,7 @@ h3 {
 }
 
 h1 {
+  text-align: center;
   font-size: 3rem;
 }
 

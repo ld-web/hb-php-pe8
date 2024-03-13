@@ -11,12 +11,7 @@
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="index.php">Accueil</a></li>
-                <li><a href="contact.php">Contact</a></li>
-            </ul>
-        </nav>
+        <?php require_once __DIR__ . '/nav.php'; ?>
     </header>
 
     <main>

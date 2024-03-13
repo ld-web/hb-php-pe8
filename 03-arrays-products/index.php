@@ -443,3 +443,38 @@ $products = [
         'image' => 'http://unsplash.it/300/180?random&gravity=center',
     ],
 ];
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/index.css" />
+    <title>Bienvenue</title>
+</head>
+<body>
+    <header>
+        <h1>Produits</h1>
+    </header>
+    
+    <div class="products-container">
+        <?php foreach ($products as $product) { ?>
+            <div class="product-item">
+                <div class="product-cover">
+                    <img src="<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>" />
+                </div>
+                <div class="product-infos">
+                    <h2><?php echo $product['name']; ?></h2>
+                    <div class="product-stars">
+                        *****
+                    </div>
+                    <h3><?php echo $product['price']; ?> €</h3>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+</body>
+</html>

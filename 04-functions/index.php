@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/functions.php';
+require_once __DIR__ . '/functions/text.php';
 
 direBonjour();
 
@@ -21,3 +22,13 @@ function findAll(string $table): array
 
 $products = findAll('products');
 $users = findAll('users');
+
+$extract = "understanding nails";
+var_dump($extract);
+
+$paragraph = getAsParagraph($extract);
+var_dump($paragraph);
+
+var_dump($extract);
+
+echo $paragraph;

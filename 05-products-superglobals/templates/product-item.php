@@ -4,7 +4,9 @@
     </div>
     <div class="product-infos">
         <h2>
-            <?php echo $product['name']; ?>
+            <a href="product.php?id=<?php echo $product['id']; ?>">
+                <?php echo $product['name']; ?>
+            </a>
         </h2>
         <div class="product-stars">
             *****

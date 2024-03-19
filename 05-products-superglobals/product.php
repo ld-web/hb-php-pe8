@@ -1,25 +1,38 @@
-<?php require_once 'layout/header.php';
-/*
-'id' => 1,
-'name' => 'NEeNbvdvaMbXeNCqvrL',
-'price' => 1045.83,
-'stars' => 5,
-'discount' => 1,
-'stock' => 0,
-'image' => 'http://unsplash.it/300/180?random&gravity=center',
-*/
+<?php
+require_once 'layout/header.php';
+require_once 'data/products.php';
+require_once 'functions/product.php';
 
-var_dump($_GET);
+// Je récupère l'ID passé en paramètre
+$id = $_GET['id'];
+
+// Je recherche le produit correspondant à cet ID dans mon tableau de produits
+// -- FOREACH --
+// foreach ($products as $item) {
+//     if ($item['id'] == $id) {
+//         $product = $item;
+//     }
+// }
+// ---
+
+$product = getProduct($id, $products);
+
+if ($product === null) {
+    http_response_code(404);
+    // Template 404 => require_once
+    echo "Produit non trouvé";
+    exit;
+}
 
 ?>
 
 <main>
-    <h1>NEeNbvdvaMbXeNCqvrL</h1>
+    <h1><?php echo $product['name']; ?></h1>
 
-    <h2>1045.83 €</h2>
+    <h2><?php echo $product['price']; ?> €</h2>
 
     <div>
-        <img src="http://unsplash.it/300/180?random&gravity=center" alt="NEeNbvdvaMbXeNCqvrL" />
+        <img src="<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>" />
     </div>
 </main>
 

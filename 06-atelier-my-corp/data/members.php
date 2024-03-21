@@ -41,7 +41,7 @@ $members = [
         'firstname' => 'Essie',
         'birth_date' => '3/24/2078',
         'abilities' => ['dev', 'devops'],
-        'quote' => 'citation',
+        'quote' => 'triangle attached wagon strike chair driver rain occur skill country jungle satellites correct strong car appearance was porch difficulty thumb rather chosen winter individualcitation',
         'picture' => 'http://unsplash.it/g/150/150?random&gravity=center'
     ],
     [
@@ -50,7 +50,7 @@ $members = [
         'firstname' => 'Iva',
         'birth_date' => '4/4/2109',
         'abilities' => ['back', 'dba', 'lead', 'sysadmin'],
-        'quote' => 'citation',
+        'quote' => 'accident cloud dot hill speed correct halfway eaten taste left heavy huge stems substance another shut free operation proper improve cost load rod molecularcitation',
         'picture' => 'http://unsplash.it/g/150/150?random&gravity=center'
     ],
     [
@@ -59,7 +59,7 @@ $members = [
         'firstname' => 'Lillie',
         'birth_date' => '1/17/2095',
         'abilities' => ['front', 'dev'],
-        'quote' => 'citation',
+        'quote' => 'scene porch using sand than parent pond beautiful however obtain ran swim alphabet ate selection ahead atomic show breathe whispered quiet triangle calm strugglecitation',
         'picture' => 'http://unsplash.it/g/150/150?random&gravity=center'
     ],
     [
@@ -68,7 +68,7 @@ $members = [
         'firstname' => 'Raymond',
         'birth_date' => '1/16/2087',
         'abilities' => ['devops', 'back', 'architect'],
-        'quote' => 'citation',
+        'quote' => 'getting tight driving outline although still ring chicken torn music every select experience automobile log load obtain certainly glass minerals age us breathe welcomecitation',
         'picture' => 'http://unsplash.it/g/150/150?random&gravity=center'
     ],
     [
@@ -77,7 +77,7 @@ $members = [
         'firstname' => 'Benjamin',
         'birth_date' => '9/7/2050',
         'abilities' => ['dev', 'back'],
-        'quote' => 'citation',
+        'quote' => 'fierce grabbed corner middle excellent sale up carefully matter queen hearing laugh protection night garden earlier lost stairs audience sight needle blow reader findcitation',
         'picture' => 'http://unsplash.it/g/150/150?random&gravity=center'
     ],
 ];

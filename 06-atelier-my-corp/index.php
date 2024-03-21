@@ -44,10 +44,10 @@ require_once 'layout/header.php';
             <?php require_once 'templates/mail_opened.php'; ?>
         </div>
         <h2 class="text-5xl font-sans mb-6">Inscrivez-vous à la newsletter !</h2>
-        <form method="GET" class="flex gap-x-6">
+        <form class="flex gap-x-6">
             <div class="grow flex items-center">
                 <label for="email" class="text-xl mr-6">Email :</label>
-                <input type="email" id="email" class="!text-black grow focus:outline-none" placeholder="email@test.com" />
+                <input type="email" id="email" name="email" class="!text-black grow focus:outline-none" placeholder="email@test.com" />
             </div>
             <div><button type="submit" class="bg-orange-400 rounded-lg uppercase py-2 px-4 hover:bg-orange-500 transition-all shadow-lg">Inscription</button></div>
         </form>

@@ -1,5 +1,7 @@
 <?php
 require_once 'data/members.php';
+
+$title = "Page membre";
 require_once 'layout/header.php';
 
 $id = $_GET['id'];

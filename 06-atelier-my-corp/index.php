@@ -3,6 +3,13 @@ require_once 'data/members.php';
 
 $title = "Bienvenue !";
 require_once 'layout/header.php';
+
+if (isset($_GET['duplicate'])) {
+    require_once 'templates/newsletter_duplicate.php';
+}
+if (isset($_GET['success'])) {
+    require_once 'templates/newsletter_registered.php';
+}
 ?>
 
 <main>
@@ -44,7 +51,7 @@ require_once 'layout/header.php';
             <?php require_once 'templates/mail_opened.php'; ?>
         </div>
         <h2 class="text-5xl font-sans mb-6">Inscrivez-vous à la newsletter !</h2>
-        <form class="flex gap-x-6">
+        <form class="flex gap-x-6" method="POST" action="newsletter_process.php">
             <div class="grow flex items-center">
                 <label for="email" class="text-xl mr-6">Email :</label>
                 <input type="email" id="email" name="email" class="!text-black grow focus:outline-none" placeholder="email@test.com" />

@@ -1,6 +1,7 @@
 <?php
 
 require_once 'functions/common.php';
+require_once 'functions/email.php';
 
 // Si je n'ai pas d'email dans les données POST
 // ou encore, si on n'est pas passé par le formulaire
@@ -10,6 +11,10 @@ if (!isset($_POST['email'])) {
 }
 
 $email = $_POST['email'];
+
+if (isSpam($email)) {
+    redirect("index.php?spam=1");
+}
 $emailsFilePath = __DIR__ . '/data/emails.txt';
 // Vérifier qu'il n'existe pas déjà dans un fichier donné
 $emailsFile = fopen($emailsFilePath, 'a+'); // a = append

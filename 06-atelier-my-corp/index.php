@@ -10,6 +10,9 @@ if (isset($_GET['duplicate'])) {
 if (isset($_GET['success'])) {
     require_once 'templates/newsletter_registered.php';
 }
+if (isset($_GET['spam'])) {
+    require_once 'templates/newsletter_spam.php';
+}
 ?>
 
 <main>

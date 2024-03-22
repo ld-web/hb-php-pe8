@@ -4,14 +4,8 @@ require_once 'data/members.php';
 $title = "Bienvenue !";
 require_once 'layout/header.php';
 
-if (isset($_GET['duplicate'])) {
-    require_once 'templates/newsletter_duplicate.php';
-}
 if (isset($_GET['success'])) {
     require_once 'templates/newsletter_registered.php';
-}
-if (isset($_GET['spam'])) {
-    require_once 'templates/newsletter_spam.php';
 }
 ?>
 

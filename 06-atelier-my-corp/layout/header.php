@@ -1,3 +1,4 @@
+<?php require_once 'functions/error.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,3 +10,8 @@
 </head>
 <body>
     <?php require_once __DIR__ . '/nav.php';
+
+if (isset($_GET['error'])) {
+    $errorMsg = getErrorMessage(intval($_GET['error']));
+    require_once 'templates/error_notification.php';
+}

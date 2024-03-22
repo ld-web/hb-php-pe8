@@ -2,6 +2,7 @@
 
 require_once 'functions/common.php';
 require_once 'functions/email.php';
+require_once 'functions/error.php';
 
 // Si je n'ai pas d'email dans les données POST
 // ou encore, si on n'est pas passé par le formulaire
@@ -13,7 +14,7 @@ if (!isset($_POST['email'])) {
 $email = $_POST['email'];
 
 if (isSpam($email)) {
-    redirect("index.php?spam=1");
+    redirect("index.php?error=" . EMAIL_SPAM);
 }
 $emailsFilePath = __DIR__ . '/data/emails.txt';
 // Vérifier qu'il n'existe pas déjà dans un fichier donné
@@ -27,7 +28,7 @@ if (filesize($emailsFilePath) > 0) {
 // S'il existe déjà, j'affiche un message d'erreur
 if ($isDuplicate) {
     fclose($emailsFile);
-    redirect('index.php?duplicate=1');
+    redirect('index.php?error=' . EMAIL_DUPLICATE);
 } else {
     // Sinon, j'enregistre l'email dans le fichier donné
     fwrite($emailsFile, $email . PHP_EOL);

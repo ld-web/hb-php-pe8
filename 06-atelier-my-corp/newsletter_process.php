@@ -14,6 +14,10 @@ if (!isset($_POST['email'])) {
 $email = $_POST['email'];
 // ['email' => $email] = $_POST;
 
+if (empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+    redirect('index.php?error=' . EMAIL_INVALID);
+}
+
 if (isSpam($email)) {
     redirect("index.php?error=" . EMAIL_SPAM);
 }

@@ -2,6 +2,7 @@
   "name": "PHP - Apache",
   "image": "ghcr.io/ld-web/php-apache:8.2",
   "postStartCommand": "service apache2 start",
+  "appPort": ["38950:80"],
   "mounts": [
     "source=${localWorkspaceFolder},target=/var/www/html,type=bind,consistency=cached"
   ],

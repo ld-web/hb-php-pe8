@@ -51,7 +51,7 @@ if (isset($_GET['success'])) {
         <form class="flex gap-x-6" method="POST" action="newsletter_process.php">
             <div class="grow flex items-center">
                 <label for="email" class="text-xl mr-6">Email :</label>
-                <input type="email" id="email" name="email" class="!text-black grow focus:outline-none" placeholder="email@test.com" />
+                <input type="email" id="email" name="email" class="!text-black grow focus:outline-none" placeholder="email@test.com" required />
             </div>
             <div><button type="submit" class="bg-orange-400 rounded-lg uppercase py-2 px-4 hover:bg-orange-500 transition-all shadow-lg">Inscription</button></div>
         </form>

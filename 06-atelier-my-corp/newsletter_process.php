@@ -12,6 +12,7 @@ if (!isset($_POST['email'])) {
 }
 
 $email = $_POST['email'];
+// ['email' => $email] = $_POST;
 
 if (isSpam($email)) {
     redirect("index.php?error=" . EMAIL_SPAM);

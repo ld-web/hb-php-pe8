@@ -18,7 +18,11 @@ var_dump($otherProduct);
 
 $user = new User();
 
+var_dump($user);
+
 $user->setFirstname("Eula")
      ->setLastname("Bowen");
 
 var_dump($user->getFullname());
+
+$admin = new User("Mabelle", "Craig");

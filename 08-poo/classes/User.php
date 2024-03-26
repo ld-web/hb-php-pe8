@@ -2,9 +2,17 @@
 
 class User
 {
-    private string $firstname;
-    private string $lastname;
+    private ?string $firstname;
+    private ?string $lastname;
     private string $email;
+
+    public function __construct(
+        ?string $prenomInitial = null,
+        ?string $nomInitial = null
+    ) {
+        $this->firstname = $prenomInitial;
+        $this->lastname  = $nomInitial;
+    }
 
     public function getFullname(): string
     {

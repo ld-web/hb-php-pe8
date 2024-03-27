@@ -1,0 +1,11 @@
+.cars-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.cars-list > div {
+  border: 1px solid black;
+  padding: 0.5rem;
+}

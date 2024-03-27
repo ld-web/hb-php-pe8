@@ -40,8 +40,12 @@ foreach ($emails as $item) {
 
 echo "---<br />";
 
-$invalidEmail = new Email("Coucou");
-var_dump($invalidEmail->getDomain());
+try {
+    $invalidEmail = new Email("Coucou");
+    var_dump($invalidEmail->getDomain());
+} catch (InvalidArgumentException $e) {
+    echo $e->getMessage() . "<br />";
+}
 
 echo "---<br />";
 

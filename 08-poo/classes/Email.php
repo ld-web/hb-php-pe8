@@ -8,7 +8,7 @@ class Email
     public function __construct(string $email)
     {
         if (empty($email) || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-            echo "$email n'est pas un email valide<br />";
+            throw new InvalidArgumentException("$email n'est pas un email valide");
         }
         $this->email = $email;
         self::$nbEmailInstances++;
@@ -22,7 +22,7 @@ class Email
         $emailParts = explode('@', $this->email);
         // Le domaine se trouve donc en seconde position
         // Son index est donc 1
-        return $emailParts[1];
+        return $emailParts[1] ?? "default.domain";
     }
 
     public function getEmail(): string

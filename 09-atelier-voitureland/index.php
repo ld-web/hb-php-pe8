@@ -1,6 +1,15 @@
 <?php
 require_once 'data/cars.php';
 
+$years = [];
+
+foreach ($cars as $car) {
+    $years[] = $car->getYear();
+}
+
+$years = array_unique($years);
+
+// --- RESULTS ---
 $results = $cars;
 
 // Voir si le formulaire de recherche a été soumis
@@ -25,10 +34,11 @@ require_once 'layout/header.php';
     <form>
         <select name="y">
             <option value="">-- Sélectionnez une année --</option>
-            <option value="2015">2015</option>
-            <option value="2016">2016</option>
-            <option value="2017">2017</option>
-            <option value="2018">2018</option>
+            <?php foreach ($years as $year) { ?>
+            <option value="<?php echo $year; ?>">
+                <?php echo $year; ?>
+            </option>
+            <?php } ?>
         </select>
         <input type="submit" value="Rechercher" />
     </form>

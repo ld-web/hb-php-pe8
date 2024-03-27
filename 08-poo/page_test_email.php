@@ -3,7 +3,12 @@
 require_once 'classes/Email.php';
 require_once 'classes/SpamChecker.php';
 
+var_dump(Email::$nbEmailInstances);
+
 $email = new Email("he@vu.mq");
+
+var_dump(Email::$nbEmailInstances);
+
 var_dump($email);
 var_dump($email->getDomain());
 
@@ -15,6 +20,8 @@ $emails = [
     new Email("kot@heimi.cu"),
     new Email("ussad@sasudna.mn"),
 ];
+
+var_dump(Email::$nbEmailInstances);
 
 // Instruction d'initialisation
 $i = 0;
@@ -35,3 +42,10 @@ echo "---<br />";
 
 $invalidEmail = new Email("Coucou");
 var_dump($invalidEmail->getDomain());
+
+echo "---<br />";
+
+var_dump(SpamChecker::SPAM_DOMAINS);
+
+$spamChecker = new SpamChecker();
+var_dump($spamChecker->isSpam($email));

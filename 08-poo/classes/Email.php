@@ -3,6 +3,7 @@
 class Email
 {
     private string $email;
+    public static int $nbEmailInstances = 0;
 
     public function __construct(string $email)
     {
@@ -10,6 +11,7 @@ class Email
             echo "$email n'est pas un email valide<br />";
         }
         $this->email = $email;
+        self::$nbEmailInstances++;
     }
 
     public function getDomain(): string

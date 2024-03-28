@@ -8,13 +8,14 @@ foreach ($cars as $car) {
 }
 
 $years = array_unique($years);
+sort($years);
 
 // --- RESULTS ---
 $results = $cars;
 
 // Voir si le formulaire de recherche a été soumis
-if (isset($_GET['y']) && !empty($_GET['y'])) {
-    $year = intval($_GET['y']); // Renvoie 0 si ce n'est pas un int valide
+if (isset($_GET['year']) && !empty($_GET['year'])) {
+    $year = intval($_GET['year']); // Renvoie 0 si ce n'est pas un int valide
 
     $results = []; // instruction d'initialisation
 
@@ -32,7 +33,7 @@ require_once 'layout/header.php';
 
 <section>
     <form>
-        <select name="y">
+        <select name="year">
             <option value="">-- Sélectionnez une année --</option>
             <?php foreach ($years as $year) { ?>
             <option value="<?php echo $year; ?>">

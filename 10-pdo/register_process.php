@@ -30,16 +30,13 @@ try {
     exit;
 }
 
-$hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-$query = "INSERT INTO users (name, email, `password`) VALUES (:name, :email, :password)";
+$query = "INSERT INTO users (name, email, `password`) VALUES (?, ?, ?)";
 $stmt = $pdo->prepare($query);
 
-$stmt->execute([
-    'name' => $name,
-    'email' => $email,
-    'password' => $hashedPassword
-]);
+$hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+$stmt->execute([$name, $email, $hashedPassword]);
 
 header('Location: index.php');
 exit;

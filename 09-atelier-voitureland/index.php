@@ -1,14 +1,8 @@
 <?php
 require_once 'data/cars.php';
+require_once 'classes/CarsCollection.php';
 
-$years = [];
-
-foreach ($cars as $car) {
-    $years[] = $car->getYear();
-}
-
-$years = array_unique($years);
-sort($years);
+$collection = new CarsCollection($cars);
 
 // --- RESULTS ---
 $results = $cars;
@@ -17,13 +11,15 @@ $results = $cars;
 if (isset($_GET['year']) && !empty($_GET['year'])) {
     $year = intval($_GET['year']); // Renvoie 0 si ce n'est pas un int valide
 
-    $results = []; // instruction d'initialisation
+    $results = $collection->getByYear($year);
 
-    foreach ($cars as $car) {
-        if ($car->getYear() === $year) {
-            $results[] = $car;
-        }
-    }
+    // $results = []; // instruction d'initialisation
+
+    // foreach ($cars as $car) {
+    //     if ($car->getYear() === $year) {
+    //         $results[] = $car;
+    //     }
+    // }
 }
 
 require_once 'layout/header.php';
@@ -35,7 +31,7 @@ require_once 'layout/header.php';
     <form>
         <select name="year">
             <option value="">-- Sélectionnez une année --</option>
-            <?php foreach ($years as $year) { ?>
+            <?php foreach ($collection->getUniqueYears() as $year) { ?>
             <option value="<?php echo $year; ?>">
                 <?php echo $year; ?>
             </option>

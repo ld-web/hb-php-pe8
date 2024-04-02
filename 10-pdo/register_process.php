@@ -1,5 +1,11 @@
 <?php
 
+[
+    'name' => $name,
+    'email' => $email,
+    'password' => $password
+] = $_POST;
+
 // Chargement de la configuration
 [
     'DB_HOST'     => $host,
@@ -24,8 +30,16 @@ try {
     exit;
 }
 
-// Je lance une requête avec l'instance de PDO
-$stmt = $pdo->query("SELECT * FROM users");
-// À partir du Statement récupéré, je lis tous les résultats
-$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-var_dump($users);
+$hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+$query = "INSERT INTO users (name, email, `password`) VALUES (:name, :email, :password)";
+$stmt = $pdo->prepare($query);
+
+$stmt->execute([
+    'name' => $name,
+    'email' => $email,
+    'password' => $hashedPassword
+]);
+
+header('Location: index.php');
+exit;

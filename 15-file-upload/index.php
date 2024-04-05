@@ -1,6 +1,17 @@
 <?php
+require_once 'functions/db.php';
+require_once 'classes/TextUtils.php';
+
 var_dump($_POST);
-// var_dump($_FILES);
+
+// Récupérer toutes les images de ma table `images` dans la BDD
+// Pour pouvoir toutes les afficher ensuite
+try {
+    $pdo = getConnection();
+} catch (PDOException) {
+    echo "Erreur lors de la connexion à la base de données";
+    exit;
+}
 
 // J'initialise ma variable à une valeur par défaut
 // Par défaut, je n'ai pas encore uploadé.
@@ -10,13 +21,19 @@ $isUploaded = false;
 // Ce if vérifie si un fichier est en train d'être uploadé
 // C'est-à-dire si un utilisateur a soumis le formulaire
 // en renseignant un fichier dans le champ 'myFile'
-if (isset($_FILES['myFile'])) {
+if (isset($_FILES['myFile']) && isset($_POST['name']) && !empty($_POST['name'])) {
     // on met le fichier dans une variable pour une meilleure lisibilité
     $file = $_FILES['myFile'];
 
     var_dump($file);
 
-    $destination = __DIR__ . '/uploads/products/' . $file['name'];
+    // Nom du fichier envoyé par le client : Product.png
+    // --> Exemple de nom de fichier dans mon système : Product_12c3sv45s458v6.png
+    // $filename = nom du fichier original . '_' . une chaîne aléatoire
+    ['filename' => $uploadFilename, 'extension' => $uploadFileExt] = pathinfo($file['name']);
+    $filename = $uploadFilename . '_' . TextUtils::randomString(25) . '.' . $uploadFileExt;
+    var_dump($filename);
+    $destination = __DIR__ . '/uploads/products/' . $filename;
 
     var_dump($destination);
 
@@ -27,8 +44,23 @@ if (isset($_FILES['myFile'])) {
         // Je définis une variable booléenne
         // afin d'avoir une trace m'indiquant que mon upload s'est bien effectué
         $isUploaded = true;
+
+        $insertQuery = "INSERT INTO images (`name`, `filename`) VALUES (:imageName, :imageFilename)";
+        // 1 - Préparation
+        $stmt = $pdo->prepare($insertQuery);
+        // 2 - Exécution
+        $stmt->execute([
+            'imageName' => $_POST['name'],
+            'imageFilename' => $filename
+        ]);
     }
 }
+
+// 1 - Pas de préparation, exécution directe
+// Un PDOStatement contient la requête et l'ensemble de ses résultats, une fois exécutée
+$stmt = $pdo->query("SELECT * FROM images");
+// $images va donc contenir, avec fetchAll, un tableau associatif de toutes les images
+$images = $stmt->fetchAll();
 
 ?>
 <!DOCTYPE html>
@@ -55,6 +87,12 @@ if (isset($_FILES['myFile'])) {
         <input type="submit" value="Envoyer" />
     </form>
 
-    <img src="uploads/products/Product.png" alt="Produit uploadé" />
+    <div>
+        <?php foreach ($images as $image) { ?>
+        <div style="margin-bottom: 2rem;">
+            <img src="uploads/products/<?php echo $image['filename']; ?>" alt="<?php echo $image['name']; ?>" />
+        </div>
+        <?php } ?>
+    </div>
 </body>
 </html>

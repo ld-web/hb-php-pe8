@@ -90,6 +90,7 @@ $images = $stmt->fetchAll();
     <div>
         <?php foreach ($images as $image) { ?>
         <div style="margin-bottom: 2rem;">
+        <!--          uploads/products/           Product.png       -->
             <img src="uploads/products/<?php echo $image['filename']; ?>" alt="<?php echo $image['name']; ?>" />
         </div>
         <?php } ?>

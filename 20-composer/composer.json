@@ -1,0 +1,17 @@
+{
+  "name": "ld-web/composer-intro",
+  "description": "Intro Composer pour élèves HB PE8",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Lucas Delobelle",
+      "email": "lucas@ld-web.net"
+    }
+  ],
+  "require": {
+    "symfony/mailer": "^7.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11.1"
+  }
+}
